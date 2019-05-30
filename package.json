@@ -1,21 +1,21 @@
 {
   "name": "@coreui/alba-react-admin-template-starter",
   "version": "2.0.9",
-  "description": "Alba React Admin Template Starter",
+  "description": "App administrative Ena Agadir",
   "author": {
-    "name": "Łukasz Holeczek",
-    "url": "http://holeczek.pl",
-    "github": "https://github.com/mrholek",
-    "twitter": "https://twitter.com/lukaszholeczek"
+  "name": "Randriantseheno Tambiniana Ravo Odilon",
+  "url": "https://github.com/TiaAntsari",
+  "github": "https://github.com/TiaAntsari/ena-repo",
+  "linkedin": "https://www.linkedin.com/in/ravo-tambiniaina-234301160/"
   },
   "contributors": [
     {
-      "name": "Andrzej Kopański",
-      "url": "https://github.com/xidedix"
+      "name": "Ravo Odilon",
+      "url": "https://github.com/TiaAntsari"
     }
   ],
   "homepage": ".",
-  "copyright": "Copyright 2018 creativeLabs Łukasz Holeczek",
+  "copyright": "Copyright 2019 dreamCoder Randriantseheno Tambiniana Ravo Odilon",
   "license": "https://coreui.io/pro/license/",
   "private": true,
   "dependencies": {
