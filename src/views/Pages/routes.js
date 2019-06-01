@@ -17,23 +17,13 @@ const User = Loadable({
   loading: Loading,
 });
 
-const Inscription = Loadable({
-  loader: () => import('./views/Pages/Etudiants/ValidationForms/ValidationForms'),
-  loading: Loading,
-});
-
-const Register = Loadable({
-  loader: () => import('./views/Pages/Register/Register'),
-  loading: Loading,
-});
-
 const Etudiant = Loadable({
-  loader: () => import('./views/Pages/Etudiants/Listes/Etudiant'),
+  loader: () => import('./views/Pages/Etudiants/Etudiant'),
   loading: Loading,
 });
 
 const EtudiantEdit = Loadable({
-  loader: () => import('./views/Pages/Etudiants/Edit/EtudiantEdit'),
+  loader: () => import('./views/Pages/Etudiants/EtudiantEdit'),
   loading: Loading,
 });
 
@@ -41,9 +31,7 @@ const EtudiantEdit = Loadable({
 const routes = [
   { path: '/', name: 'Home', component: DefaultLayout, exact: true },
   { path: '/dashboard', name: 'Dashboard', component: Dashboard },
-  { path: '/listes', name: 'Users', component: User },
-  { path: '/inscription', name: 'Inscription', component: Inscription },
-  { path: '/register', name: 'Register', component: Register },
+  { path: '/users', name: 'Users', component: User },
   { path: '/etudiants', name: 'Etudiants', component: Etudiant },
   { path: '/etudiant/:id', name: 'EtudiantEdit', component: EtudiantEdit },
 ];
