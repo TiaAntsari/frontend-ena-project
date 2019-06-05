@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Button, Card, CardBody, CardHeader, Col, Row, Table } from "reactstrap";
 // component liste des users
 
-class User extends React.Component {
+class ListesUsers extends React.Component {
     constructor(props) {
         super(props);
 
@@ -52,7 +52,7 @@ class User extends React.Component {
                                             <td>{user.idUser}</td>
                                             <td>{user.username}</td>
                                             <td>tab role ici</td>
-                                            <td>{user.activate}</td>
+                                            <td>{user.activated}</td>
                                             <td>
                                                 <Button color="success" className="px-4">Detail</Button>
                                             </td>
@@ -73,4 +73,4 @@ class User extends React.Component {
     }
 }
 
-export default User;
+export default ListesUsers;

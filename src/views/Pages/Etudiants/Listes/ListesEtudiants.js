@@ -4,16 +4,16 @@ import { Link } from 'react-router-dom';
 
 // component liste des etudiants
 
-class Etudiant extends React.Component {
+class ListesEtudiants extends React.Component {
 constructor(props) {
         super(props);
 
+        this.remove = this.remove.bind(this);
         this.state = {
             listeEtudiants: [],
             loading: false,
             redirect:false
         };
-        this.remove = this.remove.bind(this);
     }
 
     componentDidMount() {
@@ -39,7 +39,7 @@ constructor(props) {
       }
 
     render() {
-        const { listeEtudiants, loading, redirect } = this.state;
+        const { listeEtudiants, loading } = this.state;
 
         if (loading) {
             return <p>Loading...</p>;
@@ -84,7 +84,7 @@ constructor(props) {
                                                 <Button color="danger" className="px-4" onClick={()=>this.remove(etudiant.idEtudiant)}>Supprimer</Button>
                                             </td>
                                         </tr>
-                                    
+                                    /* mp chaima AZERTY123456 */
                                     ))}
                                     </tbody>
                                 </Table>
@@ -97,4 +97,4 @@ constructor(props) {
         );
     }
 }
-export default Etudiant;
+export default ListesEtudiants;

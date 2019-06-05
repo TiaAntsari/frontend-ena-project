@@ -23,12 +23,17 @@ export default {
       icon: "fa fa-user fa-lg mt-2",
       children: [{
           name: "Listes",
-          url: "/listes",
+          url: "/users/listes",
           icon: "fa fa-pencil-square-o fa-lg mt-2"
         },
         {
           name: "Ajouter",
-          url: "/register",
+          url: "/users/user",
+          icon: "fa fa-ravelry fa-lg mt-2"
+        },
+        {
+          name: "Autre",
+          url: "/users/autre",
           icon: "fa fa-ravelry fa-lg mt-2"
         }
       ]
@@ -40,12 +45,12 @@ export default {
       children: [
         {
           name: "Inscription",
-          url: "/inscription",
+          url: "/scolarite/inscription",
           icon: "fa fa-pencil-square-o fa-lg mt-2"
         },
         {
           name: "Autre action",
-          url: "/autre",
+          url: "/scolarite/autre",
           icon: "fa fa-ravelry fa-lg mt-2"
         }
       ]
@@ -180,7 +185,7 @@ export default {
     {
       name: "Parametre System",
       url: "/system",
-      icon: "fa fa-gears fa-lg mt-2"
+      icon: "fa fa-gears fa-lg mt-2" // pour la rotation "fa-spin"
     }
   ]
 };

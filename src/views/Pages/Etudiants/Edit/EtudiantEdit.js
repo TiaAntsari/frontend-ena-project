@@ -1,6 +1,7 @@
 import * as React from 'react';
-import { Button, Container, Form, FormGroup, Input, Label } from 'reactstrap';
+import { Row, Col, Container, Form, FormGroup, Input, Label } from 'reactstrap';
 import { Link, withRouter } from 'react-router-dom';
+import LaddaButton, { EXPAND_RIGHT } from 'react-ladda';
 // component liste des etudiants
 
 class EtudiantEdit extends React.Component {
@@ -16,11 +17,21 @@ constructor(props) {
         super(props);
 
         this.state = {
-            item: this.emptyItem
+            item: this.emptyItem,
+            
+            expLeft: false,
+              expRight: false,
+              
         };
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
+toggle(name) {
+  this.setState({
+    [name]: !this.state[name],
+    progress: 0.5
+  })
+}
 
 async componentDidMount() {
     if (this.props.match.params.id !== 'new') {
@@ -52,7 +63,7 @@ handleChange(event) {
     });
     this.props.history.push('/etudiants');
   }
-
+  
   render() {
     const {item} = this.state;
     const title = <h2>{item.idEtudiant ? 'Edit Etudiant' : 'Ajout Etudiant'}</h2>;
@@ -76,14 +87,32 @@ handleChange(event) {
             <Input type="date" name="dateNaissance" id="dateNaissance" value={item.dateNaissance || ''}
                    onChange={this.handleChange} autoComplete="dateNaissance"/>
           </FormGroup>
-          <FormGroup>
+         {/*  <FormGroup>
             <Label for="filiere">filiere</Label>
             <Input type="number" name="filiere" id="filiere" value={item.filiere.idFiliere || ''}
                    onChange={this.handleChange} autoComplete="filiere"/>
-          </FormGroup>
+          </FormGroup> */}
           <FormGroup>
-            <Button color="primary" type="submit">Save</Button>{' '}
-            <Button color="warning" tag={Link} to="/etudiants">Cancel</Button>
+            < Row className = "text-center" >
+            <Col md="1" className="py-4">
+                <LaddaButton
+                  type="submit"
+                  className="btn btn-success btn-ladda"
+                  onClick={() => this.toggle('expRight')}
+                  data-color="green"
+                  data-style={EXPAND_RIGHT}
+                >
+                  Submit
+                </LaddaButton>
+              </Col>{' '}
+              <Col md="1" className="py-4">
+            <LaddaButton color="warning" 
+                         tag={Link} to="/etudiants" 
+                         className="btn btn-warning btn-ladda"
+                         data-color="warning"
+            >Cancel</LaddaButton>
+            </Col>
+            </Row>
           </FormGroup>
         </Form>
       </Container>

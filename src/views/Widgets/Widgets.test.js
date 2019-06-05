@@ -1,9 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import User from './User';
+import Widgets from './Widgets';
+
+jest.mock('react-chartjs-2', () => ({
+  Line: () => null,
+}));
 
 it('renders without crashing', () => {
   const div = document.createElement('div');
-  ReactDOM.render(<User />, div);
+  ReactDOM.render(<Widgets />, div);
   ReactDOM.unmountComponentAtNode(div);
-});
+})

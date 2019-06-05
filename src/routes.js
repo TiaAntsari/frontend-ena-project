@@ -12,23 +12,28 @@ const Dashboard = Loadable({
   loading: Loading,
 });
 
-const User = Loadable({
-  loader: () => import('./views/Users/User'),
+const Users = Loadable({
+  loader: () => import('./views/Users/Listes/ListesUsers'),
   loading: Loading,
 });
 
 const Inscription = Loadable({
-  loader: () => import('./views/Pages/Etudiants/ValidationForms/ValidationForms'),
+  loader: () => import('./views/Pages/Etudiants/Add/AddNewEtudiant'),
   loading: Loading,
 });
 
-const Register = Loadable({
-  loader: () => import('./views/Pages/Register/Register'),
+const User = Loadable({
+  loader: () => import('./views/Users/Add/AddNewUser'),
   loading: Loading,
 });
 
-const Etudiant = Loadable({
-  loader: () => import('./views/Pages/Etudiants/Listes/Etudiant'),
+const AddUserSimple = Loadable({
+  loader: () => import('./views/Users/Add/AddUserSimple'),
+  loading: Loading,
+});
+
+const Etudiants = Loadable({
+  loader: () => import('./views/Pages/Etudiants/Listes/ListesEtudiants'),
   loading: Loading,
 });
 
@@ -41,11 +46,11 @@ const EtudiantEdit = Loadable({
 const routes = [
   { path: '/', name: 'Home', component: DefaultLayout, exact: true },
   { path: '/dashboard', name: 'Dashboard', component: Dashboard },
-  { path: '/listes', name: 'Users', component: User },
-  { path: '/inscription', name: 'Inscription', component: Inscription },
-  { path: '/register', name: 'Register', component: Register },
-  { path: '/etudiants', name: 'Etudiants', component: Etudiant },
-  { path: '/etudiant/:id', name: 'EtudiantEdit', component: EtudiantEdit },
+  { path: '/users/listes', name: 'Listes Utilisateurs', component: Users },
+  { path: '/scolarite/inscription', name: 'Inscription', component: Inscription },
+  { path: '/users/user', name: 'Nouveau Utilisateur', component: User },
+  { path: '/etudiants', name: 'Listes Etudiants', component: Etudiants },
+  { path: '/etudiant/:id', name: 'Etudiant', component: EtudiantEdit },
 ];
 
 export default routes;
