@@ -4,7 +4,21 @@ import { Link } from 'react-router-dom';
 
 // component liste des etudiants
 
-class ListesEnseignants extends React.Component {
+class ListesEtudiants extends React.Component {
+
+    render() {
+        return (
+            <div>
+                <h1>Page Listes Profs</h1>
+            </div>
+        );
+    }
+}
+
+export default ListesEtudiants;
+
+/* 
+
 constructor(props) {
         super(props);
 
@@ -84,7 +98,6 @@ constructor(props) {
                                                 <Button color="danger" className="px-4" onClick={()=>this.remove(etudiant.idEtudiant)}>Supprimer</Button>
                                             </td>
                                         </tr>
-                                    /* mp chaima AZERTY123456 */
                                     ))}
                                     </tbody>
                                 </Table>
@@ -96,5 +109,5 @@ constructor(props) {
             </div>
         );
     }
-}
-export default ListesEnseignants;
+
+*/

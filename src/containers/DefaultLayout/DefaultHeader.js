@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { DropdownMenu, DropdownToggle, Nav } from 'reactstrap';
+import { DropdownMenu, DropdownToggle, Nav, NavItem, NavLink, DropdownItem } from 'reactstrap';
 import PropTypes from 'prop-types';
+import Clock from 'react-live-clock';
 
 import { AppAsideToggler, AppHeaderDropdown, AppNavbarBrand, AppSidebarToggler } from '@coreui/react';
 
@@ -28,13 +29,29 @@ class DefaultHeader extends Component {
           minimized={{ src: sygnet, width: 30, height: 30, alt: 'CoreUI Logo' }}
         />
         <AppSidebarToggler className="d-md-down-none" display="lg" />
+        <Nav className="d-md-down-none" navbar>
+          <NavItem className="px-3">
+            <NavLink href="/">Accueil</NavLink>
+          </NavItem>
+          <NavItem className="px-3">
+            <NavLink href="#/utilisateurs">Utilisateurs</NavLink>
+          </NavItem>
+          <NavItem className="px-3">
+            <NavLink href="#/parametre">Parametre</NavLink>
+          </NavItem>
+        </Nav>
+        <Nav className="ml-auto" navbar>
+          <Clock format={'HH:mm:ss'} ticking={true}  />  {/* timezone={'US/Pacific'} */}
+        </Nav>
         <Nav className="ml-auto" navbar>
           <AppHeaderDropdown>
             <DropdownToggle nav>
               <img src={avatar} className="img-avatar" alt="admin@bootstrapmaster.com" />
             </DropdownToggle>
             <DropdownMenu right style={{ right: 'auto', height: '400px' }}>
-              AppHeaderDropdown
+              <DropdownItem href="#/profil"><i className="fa fa-user"></i> Profile</DropdownItem>
+              <DropdownItem href="#/profil/password"><i className="fa fa-lock"></i> Changer Mot de Passe</DropdownItem>
+              <DropdownItem href="#/deconnexion"><i className="fa fa-sign-out fa-lg mt-2"></i> Deconnexion</DropdownItem>
             </DropdownMenu>
           </AppHeaderDropdown>
         </Nav>

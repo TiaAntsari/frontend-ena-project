@@ -71,7 +71,7 @@ const onSubmit = (values, { setSubmitting, setErrors }) => {
   }, 2000)
 }
 
-class AddNewEtudiant extends React.Component {
+class AddNewEnseignant extends React.Component {
   constructor(props){
     super(props)
     this.touchAll = this.touchAll.bind(this)
@@ -113,7 +113,7 @@ class AddNewEtudiant extends React.Component {
       <div className="animated fadeIn">
         <Card>
           <CardHeader>
-            <i className=""></i><strong>Inscription Etudiant</strong>
+            <i className=""></i><strong>Inscription Enseignant</strong>
           </CardHeader>
           <CardBody>
             <Formik
@@ -265,7 +265,7 @@ class AddNewEtudiant extends React.Component {
                           <Input type="text"
                                  name="userName"
                                  id="userName"
-                                 placeholder="Numero Telephone de l'etudiant"
+                                 placeholder="Numero Telephone de l'Enseignant"
                                  autoComplete="username"
                                  valid={!errors.userName}
                                  invalid={touched.userName && !!errors.userName}
@@ -295,87 +295,33 @@ class AddNewEtudiant extends React.Component {
                         </div>
                         
                         {/* ########################################################## */}
-                        <div className="" id="parents">
-                          <div className="colonne-centree">
-                          <i className=""></i><strong className="h3">Informations Parents</strong>
-                          </div>
-                          <div>
-                        <FormGroup>
-                          <Label for="userName">Père</Label>
-                          <Input type="text"
-                                 name="userName"
-                                 id="userName"
-                                 placeholder="Nom et prenom du Père l'etudiant"
-                                 autoComplete="username"
-                                 valid={!errors.userName}
-                                 invalid={touched.userName && !!errors.userName}
-                                 required
-                                 onChange={handleChange}
-                                 onBlur={handleBlur}
-                                 value={values.userName} />
-                          <FormFeedback>{errors.userName}</FormFeedback>
-                        </FormGroup>
-                        <FormGroup>
-                          <Label for="firstName">Sa Profession</Label>
-                          <Input type="text"
-                                 name="firstName"
-                                 id="firstName"
-                                 placeholder="Profession du père de l'étudiant"
-                                 autoComplete="given-name"
-                                 valid={!errors.firstName}
-                                 invalid={touched.firstName && !!errors.firstName}
-                                 required
-                                 onChange={handleChange}
-                                 onBlur={handleBlur}
-                                 value={values.firstName} />
-                          <FormFeedback>{errors.firstName}</FormFeedback>
-                        </FormGroup>
-                        <FormGroup>
-                          <Label for="email">Mère</Label>
-                          <Input type="email"
-                                 name="email"
-                                 id="email"
-                                 placeholder="Nom et prénom de la Mère de l'étudiant"
-                                 autoComplete="email"
-                                 valid={!errors.email}
-                                 invalid={touched.email && !!errors.email}
-                                 required
-                                 onChange={handleChange}
-                                 onBlur={handleBlur}
-                                 value={values.email} />
-                          <FormFeedback>{errors.email}</FormFeedback>
-                        </FormGroup>
-                        <FormGroup>
-                          <Label for="firstName">Sa Profession</Label>
-                          <Input type="text"
-                                 name="firstName"
-                                 id="firstName"
-                                 placeholder="Profession de la Mère de l'étudiant"
-                                 autoComplete="given-name"
-                                 valid={!errors.firstName}
-                                 invalid={touched.firstName && !!errors.firstName}
-                                 required
-                                 onChange={handleChange}
-                                 onBlur={handleBlur}
-                                 value={values.firstName} />
-                          <FormFeedback>{errors.firstName}</FormFeedback>
-                        </FormGroup>
-                        </div>
-                        </div>
-
                         
-                        {/* ########################################################## */}
                         <div className="" id="etude">
                           <div className="colonne-centree">
-                          <i className=""></i><strong className="h3">Niveau d'Etude</strong>
+                          <i className=""></i><strong className="h3">Competance et Diplome</strong>
                           </div>
                           <div>
                         <FormGroup>
-                          <Label for="userName">Filière</Label>
+                          <Label for="userName">Spécialité</Label>
                           <Input type="text"
                                  name="userName"
                                  id="userName"
-                                 placeholder="Filière de l'etudiant"
+                                 placeholder="Spécialité de l'Enseignant"
+                                 autoComplete="username"
+                                 valid={!errors.userName}
+                                 invalid={touched.userName && !!errors.userName}
+                                 required
+                                 onChange={handleChange}
+                                 onBlur={handleBlur}
+                                 value={values.userName} />
+                          <FormFeedback>{errors.userName}</FormFeedback>
+                        </FormGroup>
+                        <FormGroup>
+                          <Label for="userName">Documents</Label>
+                          <Input type="file"
+                                 name="userName"
+                                 id="userName"
+                                 placeholder="Documents concernant l'Enseignant"
                                  autoComplete="username"
                                  valid={!errors.userName}
                                  invalid={touched.userName && !!errors.userName}
@@ -391,13 +337,77 @@ class AddNewEtudiant extends React.Component {
 
                         
                         {/* ########################################################## */}
-                        
-                        
                         <FormGroup>
-                          <Button type="submit" color="primary" className="mr-1" disabled={isSubmitting || !isValid}>{isSubmitting ? 'Wait...' : 'Inscrire'}</Button>
-                          <Button type="reset" color="danger" className="mr-1" onClick={handleReset}>Reinitialisé</Button>
+                          <Label for="userName">User Name</Label>
+                          <Input type="text"
+                                 name="userName"
+                                 id="userName"
+                                 placeholder="User Name"
+                                 autoComplete="username"
+                                 valid={!errors.userName}
+                                 invalid={touched.userName && !!errors.userName}
+                                 required
+                                 onChange={handleChange}
+                                 onBlur={handleBlur}
+                                 value={values.userName} />
+                          <FormFeedback>{errors.userName}</FormFeedback>
                         </FormGroup>
-                      
+                        <Row>
+                          <Col md={6}>
+                            <FormGroup>
+                              <Label for="password">Password</Label>
+                              <Input type="password"
+                                     name="password"
+                                     id="password"
+                                     placeholder="Password"
+                                     autoComplete="new-password"
+                                     valid={!errors.password}
+                                     invalid={touched.password && !!errors.password}
+                                     required
+                                     onChange={handleChange}
+                                     onBlur={handleBlur}
+                                     value={values.password} />
+                              {/*<FormFeedback>Required password containing at least: number, uppercase and lowercase letter, 8 characters</FormFeedback>*/}
+                              <FormFeedback>{errors.password}</FormFeedback>
+                            </FormGroup>
+                          </Col>
+                          <Col md={6}>
+                            <FormGroup>
+                              <Label for="confirmPassword">Password</Label>
+                              <Input type="password"
+                                     name="confirmPassword"
+                                     id="confirmPassword"
+                                     placeholder="Confirm password"
+                                     autoComplete="new-password"
+                                     valid={!errors.confirmPassword}
+                                     invalid={touched.confirmPassword && !!errors.confirmPassword}
+                                     required
+                                     onChange={handleChange}
+                                     onBlur={handleBlur}
+                                     value={values.confirmPassword} />
+                              <FormFeedback>{errors.confirmPassword}</FormFeedback>
+                            </FormGroup>
+                          </Col>
+                        </Row>
+                        <FormGroup>
+                          <CustomInput
+                            type="checkbox"
+                            id="accept"
+                            label="I accept the terms of use"
+                            required
+                            valid={!errors.accept}
+                            invalid={touched.accept && !!errors.accept}
+                            onChange={handleChange}
+                            onBlur={handleBlur} >
+                            <FormFeedback>{errors.accept}</FormFeedback>
+                          </CustomInput>
+                        </FormGroup>
+                        <FormGroup>
+                          <Button type="submit" color="primary" className="mr-1" disabled={isSubmitting || !isValid}>{isSubmitting ? 'Wait...' : 'Submit'}</Button>
+                          <Button type="button" color="success" className="mr-1" onClick={() => this.touchAll(setTouched, errors)}  disabled={isValid}>Validate</Button>
+                          <Button type="reset" color="danger" className="mr-1" onClick={handleReset}>Reset</Button>
+                        </FormGroup>
+                        
                       </Form>
                     </Col>
                     {/* <Col lg="6">
@@ -419,4 +429,4 @@ class AddNewEtudiant extends React.Component {
   }
 }
 
-export default AddNewEtudiant;
+export default AddNewEnseignant;

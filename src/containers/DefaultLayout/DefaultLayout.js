@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Redirect, Route, Switch } from 'react-router-dom';
-import { Container } from 'reactstrap';
+import { Container } from 'reactstrap'
+
 
 import {
   AppAside,
@@ -22,6 +23,7 @@ import routes from '../../routes';
 import DefaultAside from './DefaultAside';
 import DefaultFooter from './DefaultFooter';
 import DefaultHeader from './DefaultHeader';
+import { Page404 } from '../../views/Pages';
 
 class DefaultLayout extends Component {
   render() {
@@ -49,7 +51,8 @@ class DefaultLayout extends Component {
                       : (null);
                   },
                 )}
-                <Redirect from="/" to="/dashboard" />
+                <Redirect exact from="/" to="/dashboard" />
+                <Route name="Page 404" component={Page404} />
               </Switch>
             </Container>
           </main>
