@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Card, CardHeader, CardBody, Col, CustomInput, Form, FormFeedback, FormGroup, Label, Input,  Row} from 'reactstrap';
+import { Button, Card, Dropdown, DropdownItem, DropdownMenu, DropdownToggle, CardHeader, CardBody, Col, CustomInput, Form, FormFeedback, FormGroup, Label, Input,  Row} from 'reactstrap';
 import { Formik } from 'formik';
 import * as Yup from 'yup'
 import './ValidationForms.css'
@@ -74,8 +74,23 @@ const onSubmit = (values, { setSubmitting, setErrors }) => {
 class AddNewEtudiant extends React.Component {
   constructor(props){
     super(props)
-    this.touchAll = this.touchAll.bind(this)
+    this.touchAll = this.touchAll.bind(this);
 
+    // dropdown
+    this.toggle = this.toggle.bind(this);
+    this.state = {
+      dropdownOpen: new Array(2).fill(false),
+    };
+
+  }
+
+    toggle(i) {
+    const newArray = this.state.dropdownOpen.map((element, index) => {
+      return (index === i ? !element : false);
+    });
+    this.setState({
+      dropdownOpen: newArray,
+    });
   }
 
   findFirstError (formName, hasError) {
@@ -162,6 +177,22 @@ class AddNewEtudiant extends React.Component {
                           <FormFeedback>{errors.firstName}</FormFeedback>
                         </FormGroup>
                         <FormGroup>
+                          <Label for="cin">Cin</Label>
+                          <Input type="text"
+                                 name="cin"
+                                 id="cin"
+                                 placeholder="Cin de l'étudiant"
+                                 autoComplete="given-name"
+                                 valid={!errors.firstName}
+                                 invalid={touched.firstName && !!errors.firstName}
+                                 
+                                 required
+                                 onChange={handleChange}
+                                 onBlur={handleBlur}
+                                 value={values.firstName} />
+                          <FormFeedback>{errors.firstName}</FormFeedback>
+                        </FormGroup>
+                        <FormGroup>
                           <Label for="firstName">Nom</Label>
                           <Input type="text"
                                  name="firstName"
@@ -208,18 +239,25 @@ class AddNewEtudiant extends React.Component {
                         </FormGroup>
                         <FormGroup>
                           <Label for="firstName">Sexe</Label>
-                          <Input type="text"
-                                 name="firstName"
-                                 id="firstName"
-                                 placeholder="Nom de l'étudiant"
-                                 autoComplete="given-name"
-                                 valid={!errors.firstName}
-                                 invalid={touched.firstName && !!errors.firstName}
-                                 required
-                                 onChange={handleChange}
-                                 onBlur={handleBlur}
-                                 value={values.firstName} />
-                          <FormFeedback>{errors.firstName}</FormFeedback>
+                          <Row>
+                          <Col md={2}>
+                            <FormGroup check>
+                              <Label check>
+                                <Input type="radio" name="radio1" />{' '}
+                                  Homme
+                              </Label>
+                            </FormGroup>
+                          </Col>
+                          <Col md={2}>
+                            <FormGroup check>
+                              <Label check>
+                                <Input type="radio" name="radio1" />{' '}
+                                  Femme
+                              </Label>
+                            </FormGroup>
+                          </Col>
+                          </Row>
+
                         </FormGroup>
                         <FormGroup>
                           <Label for="firstName">Adresse</Label>
@@ -295,7 +333,7 @@ class AddNewEtudiant extends React.Component {
                         </div>
                         
                         {/* ########################################################## */}
-                        <div className="" id="parents">
+{/*                        <div className="" id="parents">
                           <div className="colonne-centree">
                           <i className=""></i><strong className="h3">Informations Parents</strong>
                           </div>
@@ -362,29 +400,40 @@ class AddNewEtudiant extends React.Component {
                         </FormGroup>
                         </div>
                         </div>
-
+*/}
                         
                         {/* ########################################################## */}
                         <div className="" id="etude">
                           <div className="colonne-centree">
-                          <i className=""></i><strong className="h3">Niveau d'Etude</strong>
+                          <i className=""></i><strong className="h3">Etude</strong>
                           </div>
                           <div>
+                        <Row>
+                          <Col md={6}>
                         <FormGroup>
-                          <Label for="userName">Filière</Label>
-                          <Input type="text"
-                                 name="userName"
-                                 id="userName"
-                                 placeholder="Filière de l'etudiant"
-                                 autoComplete="username"
-                                 valid={!errors.userName}
-                                 invalid={touched.userName && !!errors.userName}
-                                 required
-                                 onChange={handleChange}
-                                 onBlur={handleBlur}
-                                 value={values.userName} />
-                          <FormFeedback>{errors.userName}</FormFeedback>
+                          <Label for="userName">Niveau</Label>
+                          <Input type="select" name="select" id="exampleSelect">
+                              <option>1ère Année</option>
+                              <option>2ème Année</option>
+                              <option>3ème Année</option>
+                              <option>4ème Année</option>
+                              <option>5ème Année</option>
+                            </Input>
                         </FormGroup>
+                        </Col>
+                        <Col md={6}>
+                        <FormGroup>
+                          <Label for="Filiere">Filière</Label>
+                          <Input type="select" name="select" id="exampleSelect">
+                              <option>Filière A</option>
+                              <option>Filière B</option>
+                              <option>Filière C</option>
+                              <option>Filière D</option>
+                              <option>Filière E</option>
+                            </Input>
+                        </FormGroup>
+                        </Col>
+                        </Row>
                         
                         </div>
                         </div>

@@ -35,7 +35,6 @@ const Etudiants = Loadable({
   loader: () => import('./views/Pages/Etudiants/Listes/ListesEtudiants'),
   loading: Loading,
 });
-
 const EtudiantEdit = Loadable({
   loader: () => import('./views/Pages/Etudiants/Edit/EtudiantEdit'),
   loading: Loading,

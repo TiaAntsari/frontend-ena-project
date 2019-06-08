@@ -6,7 +6,6 @@ class Dashboard extends Component {
     return (
       <div className="animated fadeIn">
         <Accueil />
-        <Login />
       </div>
     );
   }

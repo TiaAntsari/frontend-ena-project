@@ -41,7 +41,9 @@ class DefaultHeader extends Component {
           </NavItem>
         </Nav>
         <Nav className="ml-auto" navbar>
-          <Clock format={'HH:mm:ss'} ticking={true}  />  {/* timezone={'US/Pacific'} */}
+          <strong>
+            <Clock format={'HH:mm:ss'} ticking={true}  />  {/* timezone={'US/Pacific'} */}
+          </strong>
         </Nav>
         <Nav className="ml-auto" navbar>
           <AppHeaderDropdown>

@@ -67,7 +67,7 @@ export default {
       icon: "fa fa-external-link-square fa-lg mt-2",
       children: [{
           name: "1ère Année",
-          url: "/niveau/premiere",
+          url: "/etudiants",
           icon: "fa fa-paper-plane-o fa-lg mt-2"
         },
         {

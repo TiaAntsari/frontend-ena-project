@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 // component liste des etudiants
 
-class ListesEnseignants extends React.Component {
+class ListesEtudiants extends React.Component {
 constructor(props) {
         super(props);
 
@@ -64,7 +64,7 @@ constructor(props) {
                                                 <th>Prenom</th>
                                                 <th>Date de Naissance</th>
                                                 <th>Filiere</th>
-                                                <th></th>
+                                                <th>Action</th>
                                                 <th></th>
                                             </tr>
                                         </thead>
@@ -76,7 +76,7 @@ constructor(props) {
                                             <td>{etudiant.nom}</td>
                                             <td>{etudiant.prenom}</td>
                                             <td>{etudiant.dateNaissance}</td>
-                                            <td>{etudiant.filiere}</td>
+                                            <td>CP1</td>
                                             <td>
                                                 <Button block color="primary" className="mb-3 mb-xl-0" href={"#/etudiant/" + etudiant.idEtudiant}>Edit</Button>
                                             </td>
@@ -97,4 +97,4 @@ constructor(props) {
         );
     }
 }
-export default ListesEnseignants;
+export default ListesEtudiants;
