@@ -1,5 +1,8 @@
 import * as React from 'react';
 import { Button, Card, CardBody, CardHeader, Col, Row, Table } from "reactstrap";
+import AuthenticationService from '../../../services/AuthenticationService';
+import { TOKEN_NAME } from '../../../api/Constants/nameConstants';
+import UserDataServices from '../../../api/users/UserDataServices';
 // component liste des users
 
 class ListesUsers extends React.Component {
@@ -12,13 +15,24 @@ class ListesUsers extends React.Component {
         };
     }
 
-    componentDidMount() {
+    /* componentDidMount() {
         this.setState({ isLoading: true });
-
-        fetch("http://localhost:8080/users")
+        let jwtToken = AuthenticationService.loadToken(TOKEN_NAME)
+        console.log("**************" + jwtToken)
+        fetch("http://localhost:8080/users", {headers: {'Authorization': jwtToken}})
             .then(Response => Response.json())
             .then(data => this.setState({ listeUsers: data, loading: false }));
+    } */
+
+    componentDidMount() {
+        this.setState({ isLoading: true });
+        let jwtToken = AuthenticationService.loadToken(TOKEN_NAME)
+        console.log("**** user**********" + jwtToken)
+        UserDataServices.getAllUsers()
+        .then(Response => this.setState({ listeUsers: Response.data, isloading: false }));
     }
+
+
     render() {
         const { listeUsers, loading } = this.state;
 
@@ -46,9 +60,10 @@ class ListesUsers extends React.Component {
                                                 <th scope="col">status</th>
                                             </tr>
                                         </thead>
-                                        {listeUsers.map(user => (
-                                        <tbody key={user.idUser}>
-                                        <tr>
+                                        
+                                        <tbody>
+                                            {listeUsers.map(user => (
+                                        <tr key={user.idUser}>
                                             <td>{user.idUser}</td>
                                             <td>{user.username}</td>
                                             <td>tab role ici</td>
@@ -60,8 +75,9 @@ class ListesUsers extends React.Component {
                                                 <Button color="danger" className="px-4">Supprimer</Button>
                                             </td>
                                         </tr>
+                                        ))}
                                     </tbody>
-                                    ))}
+                                    
                                 </Table>
                                 
                             </CardBody>

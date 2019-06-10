@@ -1,23 +1,62 @@
 import React, { Component } from 'react';
 import { Button, Card, CardBody, CardGroup, Col, Container, Form, Input, InputGroup, InputGroupAddon, InputGroupText, Row } from 'reactstrap';
+import AuthenticationService from '../../../services/AuthenticationService';
 
-export class Login extends Component {
+class Login extends Component {
 
-        constructor(props) {
-          super(props)
+  constructor(props) {
+    super(props)
+    this.state = {
+      username: 'admin',
+      password: '',
+        hasLoginFailed: false,
+        showSuccessMessage: false
+    }
+    this.handleChange = this.handleChange.bind(this)
+    this.loginClicked = this.loginClicked.bind(this)
+  }
 
-          this.state = {
-            username: 'admin',
-            password: '',
-            hasLoginFailed: false,
-            showSuccessMessage: false,
-            // submitted: false
+  handleChange(event) {
+    // console.log(this.state);
+    this.setState({
+      [event.target.name]: event.target.value
+    })
+  }
+
+  /* loginClicked(){
+    AuthenticationService
+    .executeJwtAuthenticationService(this.state.username, this.state.password)
+    .then(response => {
+     // console.log(response.headers["authorization"]);
+     const jwtToken = response.headers["authorization"];
+     if(jwtToken){
+        AuthenticationService.registerSuccessfulLoginForJwt(this.state.username, jwtToken)
+          this.props.history.push(`/dashboard`)
+     }else{
+       this.setState({ showSuccessMessage: false })
+        this.setState({ hasLoginFailed: true })
+     }
+    }).catch(() => {
+        this.setState({ showSuccessMessage: false })
+        this.setState({ hasLoginFailed: true })
+    })
+  } */
+
+  loginClicked() {
+      AuthenticationService
+        .executeJwtAuthenticationService(this.state.username, this.state.password)
+        .then(response => {
+          const jwtToken = response.headers["authorization"];
+          if (jwtToken) {
+            AuthenticationService.saveToken(jwtToken);
+            AuthenticationService.saveUsernameLoggedIn(this.state.username);
+            this.props.history.push(`/dashboard`)
+          }else {
+            this.setState({ showSuccessMessage: false })
+        this.setState({ hasLoginFailed: true })
           }
-
-          // this.handleChange = this.handleChange.bind(this)
-          // this.loginClicked = this.loginClicked.bind(this)
-          // this.handleSubmit = this.handleSubmit.bind(this);
-        }
+        });
+      }
 
   render() {
     return (
@@ -29,16 +68,17 @@ export class Login extends Component {
                 <Card className="p-4">
                   <CardBody>
                     <Form>
-                      {this.state.hasLoginFailed && <div className="alert alert-warning">Invalid Credentials</div>}
+                      <h1>Authentification</h1> 
+                      {this.state.hasLoginFailed && <div className="alert alert-warning">Nom d'utilisateur ou mot de passe invalide</div>}
                     {this.state.showSuccessMessage && <div>Login Sucessful</div>}
-                      <h1>Authentification</h1> <br />
+                      <br />
                       <InputGroup className="mb-3">
                         <InputGroupAddon addonType="prepend">
                           <InputGroupText>
                             <i className="icon-user"></i>
                           </InputGroupText>
                         </InputGroupAddon>
-                        <Input type="text" placeholder="Nom d'utilisateur" autoComplete="username" />
+                        <Input type="text" placeholder="Nom d'utilisateur" autoComplete="username" onChange={this.handleChange} />
                       </InputGroup>
                       <InputGroup className="mb-4">
                         <InputGroupAddon addonType="prepend">
@@ -46,11 +86,11 @@ export class Login extends Component {
                             <i className="icon-lock"></i>
                           </InputGroupText>
                         </InputGroupAddon>
-                        <Input type="password" placeholder="Mot de Passe" autoComplete="current-password" />
+                        <Input type="password" placeholder="Mot de Passe" autoComplete="password" name="password" onChange={this.handleChange}/>
                       </InputGroup>
                       <Row>
                         <Col xs="6">
-                          <Button color="primary" className="px-4" href="#/register">Login</Button>
+                          <Button color="primary" className="px-4" onClick={this.loginClicked}>Login</Button>
                         </Col>
                       </Row>
                     </Form>
@@ -65,3 +105,4 @@ export class Login extends Component {
   }
 }
 
+export default Login;

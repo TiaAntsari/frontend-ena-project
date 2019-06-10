@@ -61,6 +61,11 @@ const AddUserSimple = Loadable({
   loader: () => import('./views/Users/Add/AddUserSimple'),
   loading: Loading,
 });
+const EtudiantsLists = Loadable({
+  loader: () => import('./views/Pages/Etudiants/Listes/EtudiantsLists'),
+  loading: Loading,
+});
+
 // https://github.com/ReactTraining/react-router/tree/master/packages/react-router-config
 const routes = [
   { path: '/', name: 'Home', component: DefaultLayout, exact: true },
@@ -82,7 +87,7 @@ const routes = [
   { path: '/Enseignant/edit/:id', name: 'Enseignant', component: EnseignantEdit },
 
   // Autres
-
+  { path: '/niveau/deuxieme', name: 'Listes Etudiants', component: EtudiantsLists },
    // { path: '/etudiant/:id', name: 'Etudiant', component: EtudiantEdit },
 
 

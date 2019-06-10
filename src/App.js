@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { HashRouter, Route, Switch } from 'react-router-dom';
+import { Redirect, HashRouter, Route, Switch } from 'react-router-dom';
 import './App.css';
 // Styles
 // CoreUI Icons Set
@@ -15,6 +15,8 @@ import './scss/style.css'
 
 // Containers
 import { DefaultLayout } from './containers';
+import { Login } from './views/Pages';
+import AuthenticatedRoute from './services/AuthenticatedRoute';
 
 // import { renderRoutes } from 'react-router-config';
 
@@ -23,7 +25,9 @@ class App extends Component {
     return (
       <HashRouter>
         <Switch>
-          <Route path="/" name="Home" component={DefaultLayout} />
+          <Route exact path="/login" name="Login Page" component={Login} />
+          <Redirect exact from="/" to="/login" name="Login Page" component={Login} />
+          <AuthenticatedRoute path="/" name="Home" component={DefaultLayout} />
         </Switch>
       </HashRouter>
     );

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Button, Col, Container, Input, InputGroup, InputGroupAddon, InputGroupText, Row } from 'reactstrap';
+import { Link } from 'react-router-dom';
 
 class Page404 extends Component {
   render() {
@@ -21,7 +22,7 @@ class Page404 extends Component {
                 </InputGroupAddon>
                 <Input size="16" type="text" placeholder="What are you looking for?" />
                 <InputGroupAddon addonType="append">
-                  <Button color="info">Search</Button>
+                  <Link to="/"><Button color="info">Search</Button></Link>
                 </InputGroupAddon>
               </InputGroup>
             </Col>

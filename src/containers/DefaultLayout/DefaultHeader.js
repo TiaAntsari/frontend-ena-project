@@ -8,6 +8,7 @@ import { AppAsideToggler, AppHeaderDropdown, AppNavbarBrand, AppSidebarToggler }
 import logo from '../../assets/img/brand/logoEna.png'
 import sygnet from '../../assets/img/brand/enalg.png'
 import avatar from '../../assets/img/avatars/myRabbit.jpg'
+import AuthenticationService from '../../services/AuthenticationService';
 
 const propTypes = {
   children: PropTypes.node,
@@ -53,7 +54,7 @@ class DefaultHeader extends Component {
             <DropdownMenu right style={{ right: 'auto', height: '400px' }}>
               <DropdownItem href="#/profil"><i className="fa fa-user"></i> Profile</DropdownItem>
               <DropdownItem href="#/profil/password"><i className="fa fa-lock"></i> Changer Mot de Passe</DropdownItem>
-              <DropdownItem href="#/deconnexion"><i className="fa fa-sign-out fa-lg mt-2"></i> Deconnexion</DropdownItem>
+              <DropdownItem href="#/login" onClick={AuthenticationService.logout}  ><i className="fa fa-sign-out fa-lg mt-2"></i> Deconnexion</DropdownItem>
             </DropdownMenu>
           </AppHeaderDropdown>
         </Nav>

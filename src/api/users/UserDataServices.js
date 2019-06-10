@@ -1,6 +1,9 @@
 import axios from 'axios'
 import { API_URL } from '../Constants/ApiUrl';
-
+import AuthenticationService from '../../services/AuthenticationService';
+import { TOKEN_NAME } from '../Constants/nameConstants';
+ 
+const jwtToken = AuthenticationService.loadToken();
 class UserDataServices {
   retrieveAllTodos(name) {
     //console.log('executed service')
@@ -25,6 +28,18 @@ class UserDataServices {
   createUser(user) {
     //console.log('executed service')
     return axios.post(`${API_URL}/users`, user);
+  }
+
+  getAllUsers() {
+    if (jwtToken == null) {
+      let jwt = AuthenticationService.loadToken(TOKEN_NAME)
+console.log('*********jwt********executed service'+jwt)
+    return axios.get(`${API_URL}/users`, {headers: {'Authorization': jwt}})
+    }
+    else{
+      console.log('*********jwtToken********executed service'+jwtToken)
+      return axios.get(`${API_URL}/users`, {headers: {'Authorization': jwtToken}})
+    }
   }
 
   addUser(user) {

@@ -51,6 +51,13 @@ class DefaultLayout extends Component {
                       : (null);
                   },
                 )}
+                
+                {/* 
+                  Si authentifié
+                    => redirect /dashboard
+                  Sinon login
+                */}
+
                 <Redirect exact from="/" to="/dashboard" />
                 <Route name="Page 404" component={Page404} />
               </Switch>

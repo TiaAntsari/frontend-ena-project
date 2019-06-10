@@ -1,6 +1,8 @@
 import * as React from 'react';
 import { Button, Card, CardBody, CardHeader, Col, Row, Table } from "reactstrap";
 import { Link } from 'react-router-dom';
+import AuthenticationService from '../../../../services/AuthenticationService';
+import { TOKEN_NAME } from '../../../../api/Constants/nameConstants';
 
 // component liste des etudiants
 
@@ -18,14 +20,15 @@ constructor(props) {
 
     componentDidMount() {
         this.setState({ isLoading: true });
-
-        fetch("http://localhost:8080/ena/etudiants")
+        let jwtToken = AuthenticationService.loadToken(TOKEN_NAME)
+        console.log("**************"+jwtToken)
+        fetch("http://localhost:8080/etudiants",  {headers: {'Authorization': jwtToken}})
             .then(Response => Response.json())
             .then(data => this.setState({ listeEtudiants: data, loading: false,redirect: false }));
     }
 
     async remove(id) {
-        await fetch(`http://localhost:8080/ena/etudiant/${id}`, {
+        await fetch(`http://localhost:8080/etudiants/${id}`, {
           method: 'DELETE',
           headers: {
             'Accept': 'application/json',
@@ -54,7 +57,7 @@ constructor(props) {
                             </CardHeader>
                             <CardBody>
                             <div className="float-right" id="addEtudiant">
-            <                   Button color="success" tag={Link} to="/etudiant/new">Ajouter Etudiant</Button>
+            <                   Button color="success" tag={Link} to="/etudiant/inscription">Ajouter Etudiant</Button>
                             </div>    
                                 <Table responsive striped hover>
                                         <thead>

@@ -1,11 +1,11 @@
 import Dashboard from './Dashboard';
 import { User } from './Users';
-import { Inscription } from './Pages/Etudiants/ValidationForms';
-import { Register } from './Pages/Register'
+import { Login, Page404, Page500 } from './Pages';
 
 export { 
     Dashboard,
     User,
-    Inscription,
-    Register
+    Login,
+    Page404,
+    Page500
 };

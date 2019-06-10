@@ -1,10 +1,10 @@
 import axios from 'axios'
-
+import { API_URL } from '../Constants/ApiUrl';
+import AuthenticationService from '../../services/AuthenticationService';
+import { TOKEN_NAME } from '../Constants/nameConstants';
+ 
+const jwtToken = AuthenticationService.loadToken();
 class EtudiantDataServices {
-  retrieveAllTodos(name) {
-    //console.log('executed service')
-    return axios.get(`http://localhost:8080/users/${name}/todos`);
-  }
 
   retrieveTodo(name, id) {
     //console.log('executed service')
@@ -21,9 +21,20 @@ class EtudiantDataServices {
     return axios.put(`http://localhost:8080/users/${name}/todos/${id}`, todo);
   }
 
-  createTodo(name, todo) {
+  // Etudiants
+
+  getAllEtudiants() {
+    if (jwtToken == null) {
+      let jwt = AuthenticationService.loadToken(TOKEN_NAME)
+    
+    console.log('********************************executed service getAllEtudiants')
+    return axios.get(`${API_URL}/etudiants`, {headers: {'Authorization': jwt}})
+          }
+  }
+
+  createEtudiant(etudiant) {
     //console.log('executed service')
-    return axios.post(`http://localhost:8080/users/${name}/todos/`, todo);
+    return axios.post(`${API_URL}/etudiants`, etudiant);
   }
 
 }
